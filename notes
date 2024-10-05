@@ -1,0 +1,63 @@
+OPENFOAM-UBUNTU COMMAND LIST
+
+UBUNTU
+sudo su - → Superuser
+Cd $FOAM_RUN → We can only run solver within this folder
+
+FOLDER AND FILE MANIPULATIONS
+cd → change directory
+cd .. → back folder
+cd ~ → back to home
+clear → clear up terminal
+cp -r /opt/ . → copy folder
+cp -r [original] [new]
+exit → exit terminal
+ls → list
+ls * → display all folders and files
+ls -lt →timestamp and file size
+mkdir → make directory
+mv -r [dir1] [dir2] → move dir1 to dir2
+mv dir1 dir2 → rename dir1 to dir2
+nano filename → open text editor
+notepad.exe folder/file → edit on notepad
+pwd → print working directory
+rm → remove file or directory (-r)
+rm -r processor* → remove simultaneously
+
+
+touch trial.foam → create post processing file
+touch trial.txt → create new text file
+
+
+OPENFOAM
+decomposePar
+mpriun -np 8 foamRun -parallel
+reconstructPar
+reconstructPar -time :10,20 40:70 1000:
+Ctrl + C → stop running
+foamListTimes -rm → delete time directories
+sudo apt-get remove openfoam230 paraviewopenfoam410
+foamCloneCase originalcase newcase → copy only 0, constant, & system
+Monitoring residual→ 
+#1. controlDict, functions { #includeFunc residuals }
+#2.  foamRun > log & 
+#3. foamMonitor -l -r 1 postProcessing/residuals/0/residuals.dat
+Check size and bounding box = surfaceCheck constant/triSurface/object.stl | grep -i 'bounding box'
+Rotate STL = surfaceTransformPoints “rotate ((1 0 0) (0 0 1))" object.stl object.stl
+Translate STL = surfaceTransformPoints -translate "(0 0 1)" object.stl object.stl
+Transform Points: transformPoints -scale '(1e-3 1e-3 1e-3)'
+Scale STL = surfaceConvert in.stl out.stl -clean -scale 0.001
+Uninstall = Sudo apt-get remove openfoamxxx
+
+
+
+LOCATIONS
+$FOAM_TUTORIALS --> standard templates = /opt/openfoamxx/tutorials
+$FOAM_RUN --> organize all works in a single folder 
+$FOAM_SOLVERS --> master solver files to be copied to compile new solver
+
+Openfoam for mac
+openfoamxx-macos → change the terminal
+
+
+
