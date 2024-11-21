@@ -42,7 +42,7 @@ Monitoring residual→
 #1. controlDict, functions { #includeFunc residuals }
 #2.  foamRun > log & 
 #3. foamMonitor -l -r 1 postProcessing/residuals/0/residuals.dat
-Check size and bounding box = surfaceCheck constant/triSurface/object.stl | grep -i 'bounding box'
+surfaceCheck constant/triSurface/object.stl | grep -i 'bounding box' //Check size and bounding box
 Rotate STL = surfaceTransformPoints “rotate ((1 0 0) (0 0 1))" object.stl object.stl
 Translate STL = surfaceTransformPoints -translate "(0 0 1)" object.stl object.stl
 Transform Points: transformPoints -scale '(1e-3 1e-3 1e-3)'
