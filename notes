@@ -47,6 +47,7 @@ Rotate STL = surfaceTransformPoints “rotate ((1 0 0) (0 0 1))" object.stl obje
 Translate STL = surfaceTransformPoints -translate "(0 0 1)" object.stl object.stl
 Transform Points: transformPoints -scale '(1e-3 1e-3 1e-3)'
 Scale STL = surfaceConvert in.stl out.stl -clean -scale 0.001
+snappyHexMesh -overwrite //replace the polyMesh automatically
 Uninstall = Sudo apt-get remove openfoamxxx
 
 
